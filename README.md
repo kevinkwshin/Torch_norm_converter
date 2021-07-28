@@ -1,6 +1,7 @@
 # Torch_norm_converter
 Change Batchnorm to InstanceNorm or GroupNorm of the Pytorch Model
-```
+
+```python
 import torchvision
 net = torchvision.models.resnet18()
 print(' \n ########################## Original ResNet18 ########################## \n',net)
