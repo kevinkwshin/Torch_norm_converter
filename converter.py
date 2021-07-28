@@ -25,7 +25,7 @@ def bn2instance(module):
     return module_output
 
 def bn2group(module):
-    num_groups = 16
+    num_groups = 16 # hyper_parameter of GroupNorm
     module_output = module
     if isinstance(module, torch.nn.modules.batchnorm._BatchNorm):
         module_output = torch.nn.GroupNorm(num_groups,
@@ -52,7 +52,12 @@ def bn2group(module):
 
 # import torchvision
 # net = torchvision.models.resnet18()
-# print('*'*30,'before','*'*30,'\n',net)
+# print(' \n ########################## Original ResNet18 ########################## \n',net)
 
+# net = torchvision.models.resnet18()
 # net = bn2instance(net)
-# print('*'*30,'after','*'*30,'\n',net)
+# print(' \n ########################## ResNet18 with InstanceNorm ########################## \n',net)
+
+# net = torchvision.models.resnet18()
+# net = bn2group(net)
+# print(' \n ########################## ResNet18 with GroupNorm ########################## \n',net)
